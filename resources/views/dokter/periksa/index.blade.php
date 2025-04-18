@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tabel Periksa</h3>
+                    <h3 class="card-title">Daftar Periksa Pasien</h3>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -33,55 +33,25 @@
                         <thead>
                             <tr>
                                 <th>NO</th>
-                                <th>ID Periksa</th>
-                                <th>Pasien</th>
-                                <th>Tanggal Periksa</th>
-                                <th>Catatan</th>
-                                <th>Biaya Periksa</th>
+                                <th>Nama Pasien</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>PRK001</td>
-                                <td>Budi Santoso</td>
-                                <td>2024-04-01</td>
-                                <td>Demam dan sakit kepala</td>
-                                <td>Rp 150.000</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>PRK002</td>
-                                <td>Siti Aminah</td>
-                                <td>2024-04-02</td>
-                                <td>Batuk dan pilek</td>
-                                <td>Rp 120.000</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>PRK003</td>
-                                <td>Joko Widodo</td>
-                                <td>2024-04-03</td>
-                                <td>Kontrol tekanan darah</td>
-                                <td>Rp 200.000</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>PRK004</td>
-                                <td>Rina Sari</td>
-                                <td>2024-04-04</td>
-                                <td>Pemeriksaan rutin</td>
-                                <td>Rp 180.000</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>PRK005</td>
-                                <td>Andi Pratama</td>
-                                <td>2024-04-05</td>
-                                <td>Sakit perut</td>
-                                <td>Rp 130.000</td>
-                            </tr>
+                            @foreach ($periksas as $periksa)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $periksa->pasien->nama ?? '-' }}</td>
+                                    <td>
+                                        <a href="{{ route('memeriksa.edit', $periksa->id) }}" class="btn btn-success">
+                                            <i class="fas fa-pen"></i> Edit
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
+
                     </table>
                 </div>
                 <!-- /.card-body -->

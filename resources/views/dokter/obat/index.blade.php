@@ -19,25 +19,22 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form>
+                    <form action="{{ route('obat.store') }}" method="POST">
+                        @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nama">Nama Obat</label>
-                                <input type="text" class="form-control" placeholder="Nama Obat">
+                                <input type="text" name="nama_obat" class="form-control" placeholder="Nama Obat">
                             </div>
                             <div class="form-group">
                                 <label for="kemasan">Kemasan</label>
-                                <input type="text" class="form-control" placeholder="Kemasan">
+                                <input type="text" name="kemasan" class="form-control" placeholder="Kemasan">
                             </div>
                             <div class="form-group">
                                 <label for="harga">Harga</label>
-                                <input type="number" class="form-control" placeholder="Harga">
+                                <input type="number" name="harga" class="form-control" placeholder="Harga">
                             </div>
-
-
                         </div>
-                        <!-- /.card-body -->
-
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -79,40 +76,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>OBT001</td>
-                                    <td>Paracetamol</td>
-                                    <td>Strip</td>
-                                    <td>5000</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Edit</button>
-                                        <button class="btn btn-danger btn-sm">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>OBT002</td>
-                                    <td>Amoxicillin</td>
-                                    <td>Botol</td>
-                                    <td>15000</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Edit</button>
-                                        <button class="btn btn-danger btn-sm">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>OBT003</td>
-                                    <td>Ibuprofen</td>
-                                    <td>Strip</td>
-                                    <td>10000</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Edit</button>
-                                        <button class="btn btn-danger btn-sm">Hapus</button>
-                                    </td>
-                                </tr>
+                                @foreach ($obats as $index => $obat)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>OBT{{ str_pad($obat->id, 3, '0', STR_PAD_LEFT) }}</td>
+                                        <td>{{ $obat->nama_obat }}</td>
+                                        <td>{{ $obat->kemasan }}</td>
+                                        <td>{{ $obat->harga }}</td>
+                                        <td>
+                                            <a href="{{ route('obat.edit', $obat->id) }}"
+                                                class="btn btn-warning btn-sm">Edit</a>
+
+                                            <form action="{{ route('obat.destroy', $obat->id) }}" method="POST"
+                                                style="display:inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
+
                         </table>
                     </div>
                     <!-- /.card-body -->

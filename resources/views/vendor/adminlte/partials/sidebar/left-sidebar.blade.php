@@ -27,6 +27,17 @@
                     </a>
                 </li> --}}
                 @if (request()->is('dokter*'))
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+                        <div class="image">
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                                alt="User Image" style="width: 40px; height: 40px;">
+                        </div>
+                        <div class="info ml-2">
+                            <a href="#" class="d-block mb-0 font-weight-bold">{{ Auth::user()->nama }}</a>
+                            <small class="d-block text-muted">{{ Auth::user()->role }}</small>
+                        </div>
+                    </div>
+
                     <li class="nav-item">
                         <a href="/dokter" class="nav-link  @if (request()->is('dokter')) active @endif">
                             <i class="fas fa-tachometer-alt"></i>
@@ -34,7 +45,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/dokter/periksa" class="nav-link @if (request()->is('dokter/periksa')) active @endif">
+                        <a href="/dokter/memeriksa" class="nav-link @if (request()->is('dokter/periksa')) active @endif">
                             <p>Periksa</p>
                         </a>
                     </li>
@@ -49,6 +60,16 @@
                         </a>
                     </li>
                 @elseif (auth()->user()->role == 'pasien')
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+                        <div class="image">
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                                alt="User Image" style="width: 40px; height: 40px;">
+                        </div>
+                        <div class="info ml-2">
+                            <a href="#" class="d-block mb-0 font-weight-bold">{{ Auth::user()->nama }}</a>
+                            <small class="d-block text-muted">{{ Auth::user()->role }}</small>
+                        </div>
+                    </div>
                     <a href="/pasien" class="nav-link  @if (request()->is('pasien')) active @endif">
                         <i class="fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>

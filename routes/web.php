@@ -11,25 +11,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Rute untuk Auth (login, register) - middleware auth sudah diaktifkan dengan Auth::routes()
+// Routes ini tidak perlu middleware karena middleware sudah diatur di bawah ini
 
+// Auth Routes
+Auth::routes(); // Middleware 'auth' akan diterapkan pada semua rute terkait autentikasi seperti login, register, dan logout
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+// Rute untuk Home dan akses lainnya
+Route::middleware(['auth'])->group(function () {  // Middleware 'auth' memastikan hanya user yang sudah login yang bisa mengakses rute di bawah ini
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/dokter', [HomeController::class, 'dokter'])->name('dokter');
-    Route::prefix('dokter')->group(function(){
-        Route::resource('obat', ObatController::class);
-        Route::resource('periksa', PeriksaController::class);
+
+    // Rute untuk pasien, hanya bisa diakses oleh pengguna dengan role 'pasien'
+    Route::prefix('pasien')->middleware(['role:pasien'])->group(function () {  // Middleware 'role:pasien' memastikan hanya user dengan role pasien yang bisa mengakses rute ini
+            Route::get('/', [HomeController::class, 'pasien'])->name('pasien');
+            Route::resource('riwayat', RiwayatController::class);
+            Route::resource('periksa', PeriksaController::class);
     });
-    Route::get('/pasien', [HomeController::class, 'pasien'])->name('pasien');
-    Route::prefix('pasien')->group(function(){
-        Route::resource('riwayat', RiwayatController::class);
-        Route::resource('periksa', PeriksaController::class);
-    });
+
+    // Rute untuk dokter, hanya bisa diakses oleh pengguna dengan role 'dokter'
+    Route::prefix('dokter')->middleware(['role:dokter'])->group(function () {  // Middleware 'role:dokter' memastikan hanya user dengan role dokter yang bisa mengakses rute ini
+            Route::get('/', [HomeController::class, 'dokter'])->name('dokter');
+            Route::resource('obat', ObatController::class);
+            Route::resource('memeriksa', PeriksaController::class);
+        });
+
+    // Rute untuk logout
     Route::get('actionlogout', [HomeController::class, 'actionlogout'])->name('actionlogout');
-    
-
 });
-
-

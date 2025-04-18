@@ -10,6 +10,68 @@
     <h2 class="mb-3 pt-5">Dashboard Dokter</h2>
     <section class="content">
         <div class="container-fluid">
+            <div class="row">
+                <!-- Jumlah Pasien Terdaftar -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>150</h3>
+                            <p>Jumlah Pasien Terdaftar</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Jumlah Pasien Periksa -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>80</h3>
+                            <p>Jumlah Pasien Periksa</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Lihat Detail <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Jumlah Obat -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>44</h3>
+                            <p>Jumlah Obat</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Lihat Detail <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Pasien Belum Diperiksa -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>25</h3>
+                            <p>Pasien Belum Diperiksa</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Lihat Detail <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
