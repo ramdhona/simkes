@@ -26,15 +26,19 @@ class LoginController extends Controller
      * @var string
      */
     protected function authenticated($request, $user)
-{
-    if ($user->role == 'pasien') {
-        return redirect('/pasien');
-    } elseif ($user->role == 'dokter') {
-        return redirect('/dokter');
+    {
+        if ($user->role == 'pasien') {
+            session()->flash('login_success', 'Halo Pasien, Anda berhasil login!');
+            return redirect('/pasien');
+        } elseif ($user->role == 'dokter') {
+            session()->flash('login_success', 'Selamat datang Dokter!');
+            return redirect('/dokter');
+        }
+    
+        session()->flash('login_success', 'Login berhasil!');
+        return redirect('/home');
     }
-
-    return redirect('/home');
-}
+    
 
 
     /**

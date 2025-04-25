@@ -1,0 +1,25 @@
+.main-sidebar {
+    background-color: #007BFF !important;
+}
+.side-name {
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+.side-role {
+    color: #fff !important;
+}
+.side-sec-name {
+    border-bottom: 1px solid #fff !important;
+}
+
+.nav-link.active{
+    background-color: #fff !important; /* warna latar aktif */
+    color: #007BFF !important; /* warna teks aktif */
+    font-weight: bold !important;
+}
+
+.nav-link.active i,
+.nav-link.active p {
+    color: #007BFF !important;
+}

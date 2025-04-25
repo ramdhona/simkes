@@ -29,7 +29,7 @@
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                value="{{ old('email') }}johndoe@gmail.com" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
+                value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -46,7 +46,7 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password" value="password"
+            <input type="password" name="password" value=""
                 class="form-control @error('password') is-invalid @enderror"
                 placeholder="{{ __('adminlte::adminlte.password') }}">
 
@@ -85,52 +85,7 @@
         </div>
     </form>
 @stop
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Daftar Akun</h3>
 
-        <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
-            <thead>
-                <tr>
-
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>johndoe@gmail.com</td>
-                    <td>password</td>
-                    <td>dokter</td>
-
-                </tr>
-                <tr>
-                    <td>Jane@gmail.com</td>
-                    <td>password</td>
-                    <td>pasien</td>
-
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <!-- /.card-body -->
-</div>
 
 @section('auth_footer')
     {{-- Password reset link --}}

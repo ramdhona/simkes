@@ -36,5 +36,7 @@ Route::middleware(['auth'])->group(function () {  // Middleware 'auth' memastika
         });
 
     // Rute untuk logout
-    Route::get('actionlogout', [HomeController::class, 'actionlogout'])->name('actionlogout');
+    // Route::get('actionlogout', [HomeController::class, 'actionlogout'])->name('actionlogout');
+    Route::post('/actionlogout', [HomeController::class, 'actionlogout'])->name('actionlogout');
+
 });

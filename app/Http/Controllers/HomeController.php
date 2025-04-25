@@ -24,7 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        if(Auth::user()->role === 'dokter') {
+            return redirect('/dokter');
+        } elseif (Auth::user()->role === 'pasien') {
+            return redirect('/pasien');
+        } else {
+            return redirect('/');
+        }
+        // return view('home');
     }
     public function dokter()
     {

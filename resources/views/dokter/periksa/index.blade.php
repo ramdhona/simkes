@@ -2,63 +2,61 @@
 
 {{-- Customize layout sections --}}
 
-@section('subtitle', 'Welcome')
+@section('subtitle', 'Periksa')
 @section('content_header_title', 'Dokter')
 @section('content_header_subtitle', 'Periksa')
 
 {{-- Content body: main page content --}}
 
 @section('content_body')
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Periksa Pasien</h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                <div class="card-body">
+                    <table id="dataperiksa" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>NO</th>
+                                <th>No</th>
+                                <th>Tanggal</th>
                                 <th>Nama Pasien</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($periksas as $periksa)
+                            @foreach ($periksas as $index => $periksa)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $periksa->tgl_periksa ?? '-' }}</td>
                                     <td>{{ $periksa->pasien->nama ?? '-' }}</td>
+
+
                                     <td>
-                                        <a href="{{ route('memeriksa.edit', $periksa->id) }}" class="btn btn-success">
+                                        <a href="{{ route('memeriksa.edit', $periksa->id) }}" class="btn btn-success btn-sm">
                                             <i class="fas fa-pen"></i> Edit
                                         </a>
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Nama Pasien</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
     </div>
+
+
 
 @stop
 

@@ -11,7 +11,7 @@
 <a href="{{ $dashboard_url }}"
     @if ($layoutHelper->isLayoutTopnavEnabled()) class="navbar-brand {{ config('adminlte.classes_brand') }}"
     @else
-        class="brand-link {{ config('adminlte.classes_brand') }}" @endif>
+        class="brand-link side-sec-name {{ config('adminlte.classes_brand') }}" @endif>
 
     {{-- Small brand logo --}}
     <img src="{{ asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/AdminLTELogo.png')) }}"

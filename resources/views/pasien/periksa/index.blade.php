@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('subtitle', 'Welcome')
+@section('subtitle', 'Periksa')
 @section('content_header_title', 'Pasien')
 @section('content_header_subtitle', 'Periksa')
 
 @section('content_body')
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Tambah Data Periksa</h3>
@@ -39,11 +39,11 @@
                 <div class="card-header">
                     <h3 class="card-title">Riwayat Periksa</h3>
                 </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                <div class="card-body">
+                    <table id="pasienperiksa" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>NO</th>
+                                <th>No</th>
                                 <th>Dokter</th>
                                 <th>Tanggal</th>
                                 <th>Biaya Periksa</th>
@@ -51,30 +51,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($periksas as $periksa)
+                            @foreach ($periksas as $index => $periksa)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $periksa->dokter ? $periksa->dokter->nama : '-' }}</td>
                                     <td>{{ $periksa->tgl_periksa }}</td>
                                     <td>Rp{{ number_format($periksa->biaya_periksa, 0, ',', '.') }}</td>
                                     <td>
                                         @if ($periksa->status == 'Sudah Diperiksa')
-                                            <small class="badge badge-success">
+                                            <span class="badge badge-success">
                                                 <i class="fas fa-check-circle"></i> Sudah Diperiksa
-                                            </small>
+                                            </span>
                                         @else
-                                            <small class="badge badge-warning">
+                                            <span class="badge badge-warning">
                                                 <i class="far fa-clock"></i> Belum Diperiksa
-                                            </small>
+                                            </span>
                                         @endif
                                     </td>
-
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Dokter</th>
+                                <th>Tanggal</th>
+                                <th>Biaya Periksa</th>
+                                <th>Status</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
 @stop

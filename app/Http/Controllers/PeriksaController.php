@@ -56,7 +56,7 @@ class PeriksaController extends Controller
         ]);
 
         // return redirect()->back()->with('success', 'Data periksa berhasil ditambahkan.');
-        return redirect()->route('periksa.index')->with('success', 'Data periksa berhasil diperbarui.');
+        return redirect()->route('periksa.index')->with('success', 'Data periksa berhasil ditambahkan.');
 
     }
     public function edit($id)
